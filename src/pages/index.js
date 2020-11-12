@@ -8,7 +8,7 @@ export default function Home({ countries }) {
   return (
     <>
       <Layout>
-        <p className={styles.counts}>Found {countries.length} countries</p>
+        <p className={styles.counts}>Found {countries.length} Countries</p>
 
         <SearchInput placeholder="Filter by Name, Region or SubRegion"/>
 
