@@ -14,10 +14,24 @@
     padding: 20px;
     color: var(--text-color-secondary);
     font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading_arrow {
+    color: var(--primary-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 2px;
 }
 
 .heading_name {
-    text-align: left;
+    justify-content: flex-start;
 }
 
 .row {
