@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 
 import styles from "./CountriesTable.module.css";
@@ -36,6 +37,8 @@ const SortArrow = ({ direction }) => {
 };
 
 const CountriesTable = ({ countries }) => {
+  // console.log(countries)
+
   const [direction, setDirection] = useState();
   const [value, setValue] = useState();
 
@@ -77,10 +80,12 @@ const CountriesTable = ({ countries }) => {
       </div>
 
       {orderedCountries.map((country) => (
-        <div className={styles.row}>
-          <div className={styles.name}>{country.name}</div>
-          <div className={styles.population}>{country.population}</div>
-        </div>
+        <Link href="/country/[id]" as={`/country/${country.alpha3Code}`}>
+          <div className={styles.row}>
+            <div className={styles.name}>{country.name}</div>
+            <div className={styles.population}>{country.population}</div>
+          </div>
+        </Link>
       ))}
     </>
   );
