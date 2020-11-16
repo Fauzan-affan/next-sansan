@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./CountriesTable.module.css";
 
@@ -41,7 +41,7 @@ const CountriesTable = ({ countries }) => {
 
   const [direction, setDirection] = useState();
   const [value, setValue] = useState();
-
+  
   const orderedCountries = orderBy(countries, value, direction);
 
   const switchDirection = () => {
@@ -59,15 +59,22 @@ const CountriesTable = ({ countries }) => {
     setValue(value);
   };
 
+  const SwitchGoBackButon = () => {
+    localStorage.setItem("back", true)
+  }
+
   return (
     <>
       <div className={styles.heading}>
+
+        <div className={styles.heading_flag}></div>
+
         <button
           className={styles.heading_name}
           onClick={() => setValueAndDirection("name")}
         >
           <div>Name</div>
-          <SortArrow direction={direction} />
+          {value === "name" && <SortArrow direction={direction} />}
         </button>
 
         <button
@@ -75,15 +82,36 @@ const CountriesTable = ({ countries }) => {
           onClick={() => setValueAndDirection("population")}
         >
           <div>Population</div>
-          <SortArrow direction={direction} />
+          {value === "population" && <SortArrow direction={direction} />}
+        </button>
+        
+        <button
+          className={styles.heading_area}
+          onClick={() => setValueAndDirection("area")}
+        >
+          <div>Area (Km <sup style={{fontSize: "0.5rem"}}>2</sup>)</div>
+          {value === "area" && <SortArrow direction={direction} />}
+        </button>
+
+        <button
+          className={styles.heading_gini}
+          onClick={() => setValueAndDirection("gini")}
+        >
+          <div>Gini</div>
+          {value === "gini" && <SortArrow direction={direction} />}
         </button>
       </div>
 
       {orderedCountries.map((country) => (
-        <Link href="/country/[id]" as={`/country/${country.alpha3Code}`}>
+        <Link href="/country/[id]" as={`/country/${country.alpha3Code}`} key={country.name} onClick={SwitchGoBackButon}>
           <div className={styles.row}>
+            <div className={styles.flag}>
+              <img src={country.flag} alt={country.name}/>
+            </div>
             <div className={styles.name}>{country.name}</div>
             <div className={styles.population}>{country.population}</div>
+            <div className={styles.area}>{country.area || 0}</div>
+            <div className={styles.gini}>{country.gini || 0} %</div>
           </div>
         </Link>
       ))}

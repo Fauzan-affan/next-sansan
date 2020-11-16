@@ -1,0 +1,12 @@
+.header_back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.header_back_label {
+    margin-right: 4px;
+    color: var(--text-color-secondary);
+}

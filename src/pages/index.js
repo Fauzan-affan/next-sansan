@@ -6,27 +6,34 @@ import SearchInput from "../components/SearchInput/SearchInput.js";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ countries }) {
-  const [keyword, setKeyword] = useState("")
+  const [keyword, setKeyword] = useState("");
 
-  const filteredCountries = countries.filter(country => (
-    country.name.toLowerCase().includes(keyword) ||
-    country.region.toLowerCase().includes(keyword) ||
-    country.subregion.toLowerCase().includes(keyword)
-  ))
+  const filteredCountries = countries.filter(
+    (country) =>
+      country.name.toLowerCase().includes(keyword) ||
+      country.region.toLowerCase().includes(keyword) ||
+      country.subregion.toLowerCase().includes(keyword)
+  );
 
   const handleChange = (e) => {
-    e.preventDefault()
-    setKeyword(e.target.value.toLowerCase())
-  }
+    e.preventDefault();
+    setKeyword(e.target.value.toLowerCase());
+  };
 
   return (
     <>
       <Layout>
-        <p className={styles.counts}>Found {countries.length} Countries</p>
+        <div className={styles.input_container}>
+          <p className={styles.counts}>Found {countries.length} Countries</p>
 
-        <SearchInput placeholder="Filter by Name, Region or SubRegion" onChange={handleChange}/>
-
-        <CountriesTable countries={filteredCountries}/>
+          <div className={styles.input}>
+            <SearchInput
+              placeholder="Filter by Name, Region or SubRegion"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <CountriesTable countries={filteredCountries} />
       </Layout>
     </>
   );
