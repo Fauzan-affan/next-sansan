@@ -1,0 +1,24 @@
+.menus {
+    display: flex;
+    color: var(--text-color-secondary);
+    list-style: none;
+}
+
+.menus a {
+    display: inline-block;
+    padding-left: 32px;
+}
+
+.menus li {
+    transition: 0.5s;
+}
+
+.menus li:hover {
+    color: var(--text-color);
+}
+
+@media screen and (max-width: 720px) {
+    .menus a {
+        padding-left: 20px;
+    }
+}
