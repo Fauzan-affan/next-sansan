@@ -17,6 +17,10 @@
     color: var(--text-color);
 }
 
+.menu_active {
+    color: var(--text-color);
+}
+
 @media screen and (max-width: 720px) {
     .menus a {
         padding-left: 20px;

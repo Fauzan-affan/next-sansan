@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import Menu from "../Menu/Menu.js";
 
@@ -37,7 +38,7 @@ const Layout = ({ children, title = "Fauzan Affan" }) => {
     <>
       <header className={styles.header}>
         <div className={styles.header_logo_and_theme}>
-          <h1 className={styles.header_logo}>Fauzan Affan .</h1>
+          <Link href="/"><h1 className={styles.header_logo}>Fauzan Affan .</h1></Link>
           <div className={styles.header_theme} onClick={switchTheme}>
             <p className={styles.header_theme_label}>
               {theme.charAt(0).toLocaleUpperCase() + theme.slice(1)}

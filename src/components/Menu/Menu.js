@@ -1,8 +1,10 @@
 import Link from "next/link";
+import {withRouter} from "next/router"
 
 import styles from "./Menu.module.css";
 
-const Menu = () => {
+const Menu = ({router}) => {
+
   const menus = [
     { name: "Home", href: "/" },
     { name: "Blog", href: "/blog" },
@@ -11,7 +13,7 @@ const Menu = () => {
   return (
     <ul className={styles.menus}>
       {menus.map((menu) => (
-        <li>
+        <li className={router.pathname === menu.href ? styles.menu_active : ""}>
           <Link href={menu.href}>
             <a>{menu.name}</a>
           </Link>
@@ -21,4 +23,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default withRouter(Menu);

@@ -23,7 +23,7 @@ export default function Home({ countries }) {
   return (
     <>
       <Layout>
-        <div className={styles.input_container}>
+        {/* <div className={styles.input_container}>
           <p className={styles.counts}>Found {countries.length} Countries</p>
 
           <div className={styles.input}>
@@ -33,7 +33,7 @@ export default function Home({ countries }) {
             />
           </div>
         </div>
-        <CountriesTable countries={filteredCountries} />
+        <CountriesTable countries={filteredCountries} /> */}
       </Layout>
     </>
   );
