@@ -10,7 +10,7 @@ const blog = () => {
       <h1 className={styles.header_title}>Blog</h1>
       <div className={styles.title_container}>
         <ul>
-          <li className={styles.article}>
+          <li className={styles.article} key={1}>
             <Link href="/blog/[id]" as={`/blog/${1}`}>
               <a className={styles.title}>Me vs Jakarta</a>
             </Link>

@@ -7,6 +7,6 @@
 }
 
 .header_back_label {
-    margin-right: 4px;
+    margin-right: 0.5em;
     color: var(--text-color-secondary);
 }

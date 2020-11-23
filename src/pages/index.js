@@ -1,51 +1,62 @@
-import { useState } from "react";
-import CountriesTable from "../components/CountriesTable/CountriesTable.js";
 import Layout from "../components/Layout/Layout.js";
-import SearchInput from "../components/SearchInput/SearchInput.js";
 
 import styles from "../styles/Home.module.css";
 
-export default function Home({ countries }) {
-  const [keyword, setKeyword] = useState("");
+import Image from "next/image";
+import Link from "next/link";
 
-  const filteredCountries = countries.filter(
-    (country) =>
-      country.name.toLowerCase().includes(keyword) ||
-      country.region.toLowerCase().includes(keyword) ||
-      country.subregion.toLowerCase().includes(keyword)
-  );
+import { motion } from "framer-motion";
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setKeyword(e.target.value.toLowerCase());
-  };
+import { useState, useEffect } from "react";
+
+const transition = {duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96]}
+
+export default function Home() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    setInterval(() => {
+      setTime(new Date());
+    }, 1 * 1000);
+
+    return () => {
+      clearInterval(
+        setInterval(() => {
+          setTime(new Date());
+        }, 1 * 1000)
+      );
+    };
+  }, []);
 
   return (
     <>
       <Layout>
-        {/* <div className={styles.input_container}>
-          <p className={styles.counts}>Found {countries.length} Countries</p>
-
-          <div className={styles.input}>
-            <SearchInput
-              placeholder="Filter by Name, Region or SubRegion"
-              onChange={handleChange}
-            />
-          </div>
+        <div className={styles.container}>
+          <Link href="/home/[name]" as={`/home/fauzan-affan`}>
+            <div className={styles.container_image}>
+              <div className={styles.thumbnail}>
+                <motion.div 
+                  whileHover={{ scale: 1.1 }}
+                  transition={transition}
+                >
+                  <Image
+                    className={styles.image}
+                    src="/sansan-cropped.jpg"
+                    width={2226}
+                    height={3069}
+                    alt="my image"
+                    priority
+                  />
+                </motion.div>
+              </div>
+              <div className={styles.image_details}>
+                <div>Fauzan </div>
+                <div>{time.toLocaleTimeString()}</div>
+              </div>
+            </div>
+          </Link>
         </div>
-        <CountriesTable countries={filteredCountries} /> */}
       </Layout>
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const res = await fetch("https://restcountries.eu/rest/v2/all");
-  const countries = await res.json();
-
-  return {
-    props: {
-      countries,
-    },
-  };
-};

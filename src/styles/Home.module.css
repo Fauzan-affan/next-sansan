@@ -1,4 +1,4 @@
-.counts {
+/* .counts {
     margin: 12px 0;
     color: var(--text-color-secondary);
 }
@@ -19,5 +19,35 @@
 
     .input {
         flex: 2;
+    }
+} */
+
+.container {
+    display: grid;
+    place-items: center;
+    height: 100%;
+}
+
+.container_image {
+    width: 15%;
+
+    cursor: pointer;
+}
+
+.thumbnail {
+    overflow: hidden
+}
+
+.image_details {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 400px) {
+    .container_image {
+        width: 40%;
     }
 }

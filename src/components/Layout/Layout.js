@@ -36,25 +36,27 @@ const Layout = ({ children, title = "Fauzan Affan" }) => {
 
   return (
     <>
-      <header className={styles.header}>
-        <div className={styles.header_logo_and_theme}>
-          <Link href="/"><h1 className={styles.header_logo}>Fauzan Affan .</h1></Link>
-          <div className={styles.header_theme} onClick={switchTheme}>
-            <p className={styles.header_theme_label}>
-              {theme.charAt(0).toLocaleUpperCase() + theme.slice(1)}
-            </p>
-            {theme === "light" ? <BsToggleOff /> : <BsToggleOn />}
-          </div>
-        </div>
-        <nav></nav>
-        <Menu />
-      </header>
-
       <div className={styles.container}>
         <Head>
           <title>{title}</title>
           <link rel="icon" href="/man.svg" />
         </Head>
+        
+        <header className={styles.header}>
+          <div className={styles.header_logo_and_theme}>
+            <Link href="/">
+              <h1 className={styles.header_logo}>Fauzan Affan .</h1>
+            </Link>
+            <div className={styles.header_theme} onClick={switchTheme}>
+              <p className={styles.header_theme_label}>
+                {theme.charAt(0).toLocaleUpperCase() + theme.slice(1)}
+              </p>
+              {theme === "light" ? <BsToggleOff /> : <BsToggleOn />}
+            </div>
+          </div>
+          <nav></nav>
+          <Menu />
+        </header>
 
         <main className={styles.main}>{children}</main>
 
